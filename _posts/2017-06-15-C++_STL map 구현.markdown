@@ -1,0 +1,143 @@
+---
+layout: post
+title:  "C++ STL map 구현"
+date:   2017-06-15 23:45:00 +0900
+categories: jekyll update
+---
+
+map은 key와 value값을 맵핑 시키는 자료구조이다.
+삽입과 찾기가 O(logN)만에 가능하며 실제로는 레드블랙트리로 구성되어 있다.
+여기서는 단순하게 이진탐색트리로 구현하였다.
+
+```c++
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+template <typename T, typename P>
+class TreeNode {
+	
+private:
+	T key;
+	P value;
+	TreeNode *leftChild;
+	TreeNode *rightChild;
+public:
+	template <typename T, typename P>
+	friend ostream& operator<<(ostream& out, const TreeNode<T, P>& m);
+	TreeNode() {
+		leftChild = rightChild = NULL;
+	}
+
+	TreeNode(T key, P value) {
+		this->key = key;
+		this->value = value;
+		leftChild = rightChild = NULL;
+	}
+
+	P getValue() {
+		return value;
+	}
+
+	TreeNode& insert(TreeNode *node) {
+		if (this->key < node->key) {
+			if (this->rightChild == NULL) {
+				this->rightChild = node;
+				return *node;
+			}
+			else return this->rightChild->insert(node);
+		}
+		else if (this->key > node->key) {
+			if (this->leftChild == NULL) {
+				this->leftChild = node;
+				return *node;
+			}
+			else return this->leftChild->insert(node);
+		}
+	}
+
+	TreeNode& find(T key) {
+		if (this->key < key) {
+			if (this->rightChild == NULL) return this->insert(new TreeNode(key,NULL));
+			else return this->rightChild->find(key);
+		}
+		else if (this->key > key) {
+			if (this->leftChild == NULL) return this->insert(new TreeNode(key, NULL));
+			else return this->leftChild->find(key);
+		}
+		else {
+			return *this;
+		}
+	}
+
+	P operator=(P value) {
+		return this->value = value;
+	}
+};
+
+template <typename T, typename P>
+class BinaryTree {
+private:
+	TreeNode<T,P> *root;
+public:
+	BinaryTree() {
+		root = NULL;
+	}
+	void insert(T key, P value) {
+		TreeNode *newNode = new TreeNode(key, value);
+		if (root == NULL) {
+			root = newNode;
+		}
+		else {
+			root->insert(newNode);
+		}
+	}
+
+	TreeNode<T,P>& find(T key) {
+		if (root == NULL) {
+			root = new TreeNode<T,P>(key,NULL);
+			return *root;
+		}
+		return root->find(key);
+	}
+};
+
+template <typename T, typename P>
+class Map {
+private:
+	BinaryTree<T,P> *bt;
+public:
+	Map() {
+		bt = new BinaryTree<T,P>();
+	}
+
+	TreeNode<T,P>& operator[](T key) {
+		return bt->find(key);
+	}
+
+	bool operator=(P value) {
+		return this* = value;
+	}
+};
+
+template <typename T, typename P>
+ostream& operator<<(ostream& out, const TreeNode<T,P>& m) {
+	cout << m.value;
+	return out;
+}
+
+int main() {
+
+	Map<char, int> m;
+
+	m['a'] = 3;
+	m['b'] = 2;
+	m['c'] = 1;
+	cout << m['a'] << endl;
+	cout << m['b'] << endl;
+	cout << m['c'] << endl;
+	return 0;
+}
+
+```
