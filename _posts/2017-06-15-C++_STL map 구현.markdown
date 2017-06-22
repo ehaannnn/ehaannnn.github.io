@@ -17,15 +17,14 @@ using namespace std;
 
 template <typename T, typename P>
 class TreeNode {
-	
 private:
 	T key;
 	P value;
 	TreeNode *leftChild;
 	TreeNode *rightChild;
 public:
-	template <typename T, typename P>
-	friend ostream& operator<<(ostream& out, const TreeNode<T, P>& m);
+	template <typename T1, typename P1>
+	friend ostream& operator<<(ostream& out, const TreeNode<T1, P1>& m);
 	TreeNode() {
 		leftChild = rightChild = NULL;
 	}
@@ -85,7 +84,7 @@ public:
 		root = NULL;
 	}
 	void insert(T key, P value) {
-		TreeNode *newNode = new TreeNode(key, value);
+		TreeNode<T,P> *newNode = new TreeNode<T,P>(key, value);
 		if (root == NULL) {
 			root = newNode;
 		}
@@ -103,7 +102,7 @@ public:
 	}
 };
 
-template <typename T, typename P>
+template <class T, class P>
 class Map {
 private:
 	BinaryTree<T,P> *bt;
@@ -117,11 +116,11 @@ public:
 	}
 
 	bool operator=(P value) {
-		return this* = value;
+		return *this = value;
 	}
 };
 
-template <typename T, typename P>
+template <class T, class P>
 ostream& operator<<(ostream& out, const TreeNode<T,P>& m) {
 	cout << m.value;
 	return out;
@@ -139,5 +138,6 @@ int main() {
 	cout << m['c'] << endl;
 	return 0;
 }
+
 
 ```
