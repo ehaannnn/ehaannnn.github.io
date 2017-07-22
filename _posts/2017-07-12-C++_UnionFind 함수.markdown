@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "C++_UnionFind 함수"
+title:  "C++ UnionFind 함수"
 date:   2017-07-12 20:50:00 +0900
 categories: jekyll update
 ---
