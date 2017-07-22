@@ -1,8 +1,162 @@
 ---
 layout: post
-title:  "졸업과제-지능형 게시판(사전 조사)"
+title:  "졸업과제-인터넷 게시판의 시각화(데이터 수집)"
 date:   2017-05-13 15:25:56 +0900
 categories: jekyll update
 ---
-본 프로젝트는 인터넷 토론 사이트의 논쟁 분석 및 가시화 모듈 개발을 목적으로 한다. 현재 온라인 게시판은 사람들이 가장 적극적으로 의사표현을 하는 주요 수단 중 하나이다. 따라서 온라인 게시판분석을 통해 사람들의 관심도 추이, 어떤 논쟁이 가장 주목받는지, '어그로'를 끄는 사람이 누구인지 등을 알 수 있도록 하고 이를 시각화 하여 효과적으로 게시글을 파악할 수 있는 새로운 게시판 모델을 만들고자 한다.
 
+기존의 인터넷 게시판의 형태는 시간에 따른 게시물을 보여주는 리스트 형태이다. 이러한 형태는 게시물이 매우 빠른 시간 내에 리젠되는 경우 사용자가 게시물을 확인하기 어려우며 어떤 글이 화제가 되고 있는지 한눈에 파악하기 어렵다. 우리는 이 문제점을 인지하고 인터넷 게시글을 효과적으로 보여줄 수 있는 새로운 형태의 게시판 모델을 개발하려고 한다.
+
+타켓으로 잡은 인터넷 게시판은 [레딧][레딧]이다.
+레딧의 데이터를 수집하기 위해 레딧에서 제공하는 [API][API]를 사용하였다.
+또한 다음의 [블로그][블로그]를 참고하였다.
+
+API를 분석 하여 GET방식으로 데이터를 가져오게 되면 다음과 같은 형태의 JSON형식의 데이터를 가져올 수 있게 된다.
+
+```
+{
+	"kind": "Listing",
+	"data": {
+		"facets": {},
+		"modhash": "",
+		"children": [{
+			"kind": "t3",
+			"data": {
+				"contest_mode": false,
+				"approved_at_utc": null,
+				"banned_by": null,
+				"media_embed": {},
+				"thumbnail_width": null,
+				"subreddit": "nosleep",
+				"selftext_html":"",
+				"likes": null,
+				"suggested_sort": null,
+				"user_reports": [],
+				"secure_media": null,
+				"link_flair_text": null,
+				"id": "61b5ls",
+				"banned_at_utc": null,
+				"view_count": null,
+				"secure_media_embed": {},
+				"clicked": false,
+				"report_reasons": null,
+				"author": "Pippinacious",
+				"saved": false,
+				"mod_reports": [],
+				"can_mod_post": false,
+				"name": "t3_61b5ls",
+				"score": 13480,
+				"approved_by": null,
+				"over_18": false,
+				"domain": "self.nosleep",
+				"hidden": false,
+				"thumbnail": "self",
+				"subreddit_id": "t5_2rm4d",
+				"edited": 1490398333.0,
+				"link_flair_css_class": null,
+				"author_flair_css_class": "trophy",
+				"gilded": 1,
+				"downs": 0,
+				"brand_safe": true,
+				"archived": false,
+				"removal_reason": null,
+				"can_gild": false,
+				"thumbnail_height": null,
+				"hide_score": false,
+				"spoiler": false,
+				"permalink": "/r/nosleep/comments/61b5ls/fran_and_jock/?ref=search_posts",
+				"num_reports": null,
+				"locked": false,
+				"stickied": false,
+				"created": 1490413350.0,
+				"url": "https://www.reddit.com/r/nosleep/comments/61b5ls/fran_and_jock/",
+				"author_flair_text": "Aug. 2016",
+				"quarantine": false,
+				"title": "Fran and Jock",
+				"created_utc": 1490384550.0,
+				"subreddit_name_prefixed": "r/nosleep",
+				"distinguished": null,
+				"media": null,
+				"num_comments": 315,
+				"is_self": true,
+				"visited": false,
+				"subreddit_type": "public",
+				"is_video": false,
+				"ups": 13480
+			}
+		}, {
+			"kind": "t3",
+			"data": {
+				"contest_mode": false,
+				"approved_at_utc": null,
+				"banned_by": null,
+				"media_embed": {},
+				"thumbnail_width": null,
+				"subreddit": "ProRevenge",
+				"selftext_html": "",
+				"likes": null,
+				"suggested_sort": null,
+				"user_reports": [],
+				"secure_media": null,
+				"link_flair_text": null,
+				"id": "62kfbh",
+				"banned_at_utc": null,
+				"view_count": null,
+				"secure_media_embed": {},
+				"clicked": false,
+				"report_reasons": null,
+				"author": "Drunken_Black_Belt",
+				"saved": false,
+				"mod_reports": [],
+				"can_mod_post": false,
+				"name": "t3_62kfbh",
+				"score": 24763,
+				"approved_by": null,
+				"over_18": false,
+				"domain": "self.ProRevenge",
+				"hidden": false,
+				"thumbnail": "self",
+				"subreddit_id": "t5_2vjvl",
+				"edited": 1490972037.0,
+				"link_flair_css_class": null,
+				"author_flair_css_class": null,
+				"gilded": 3,
+				"downs": 0,
+				"brand_safe": false,
+				"archived": false,
+				"removal_reason": null,
+				"can_gild": false,
+				"thumbnail_height": null,
+				"hide_score": false,
+				"spoiler": false,
+				"permalink": "/r/ProRevenge/comments/62kfbh/pyramid_scheme_scammer_ends_up_paying_in_the_end/?ref=search_posts",
+				"num_reports": null,
+				"locked": false,
+				"stickied": false,
+				"created": 1490985303.0,
+				"url": "https://www.reddit.com/r/ProRevenge/comments/62kfbh/pyramid_scheme_scammer_ends_up_paying_in_the_end/",
+				"author_flair_text": null,
+				"quarantine": false,
+				"title": "Pyramid Scheme scammer ends up paying in the end!",
+				"created_utc": 1490956503.0,
+				"subreddit_name_prefixed": "r/ProRevenge",
+				"distinguished": null,
+				"media": null,
+				"num_comments": 1912,
+				"is_self": true,
+				"visited": false,
+				"subreddit_type": "public",
+				"is_video": false,
+				"ups": 24763
+			}
+		}],
+		"after": "t3_2tpjep", 
+		"before": null
+	}
+```
+위 JSON파일은 레딧에서 oop라는 키워드가 포함된 서브레딧중 가장 인기많은 2가지를 가져온 것이다.
+우리는 이 데이터 중 title,url,ups(추천수) 이 세 가지를 이용하여 시각화를 해보기로 하였다.
+
+[레딧]: https://www.reddit.com/
+[API]: https://www.reddit.com/dev/api/
+[블로그]: https://www.sitepoint.com/taming-the-snoo-playing-with-the-reddit-api/
