@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "졸업과제-인터넷 게시판의 시각화(데이터 시각화)"
+date:   2017-07-23 17:00:00 +0900
+categories: jekyll update
+---
+
+데이터 시각화는 D3.js를 이용하기로 하였다.
+원래 [졸업과제-인터넷 게시판의 시각화(서버만들기)][졸업과제-인터넷 게시판의 시각화(서버만들기)]에서 만들기로 하였던 그래프 시각화는 몇 가지 어려움이 있어 아래 그림과 같은 시각화를 하기로 하였다.
+그림은 [codeflower][codeflower]에서 가져왔고 시각화 또한 [codeflower][codeflower] 페이지의 소스를 참고하여 진행 할 예정이다.
+
+![BulletinBoard]({{ site.url }}/assets/codeflower.PNG)
+
+우리는 먼저 reddit에서 각 카테고리에 대한 가지를 만들어 추천 수가 많은 게시글의 노드는 노드의 크기를 크게 해주는 방식으로 시각화를 생각하고 있다.
+
+
+[졸업과제-인터넷 게시판의 시각화(서버만들기)]: https://ehaannnn.github.io/jekyll/update/2017/07/22/%EC%A1%B8%EC%97%85%EA%B3%BC%EC%A0%9C(%EC%84%9C%EB%B2%84%EB%A7%8C%EB%93%A4%EA%B8%B0).html
+[codeflower]: http://www.redotheweb.com/CodeFlower/
