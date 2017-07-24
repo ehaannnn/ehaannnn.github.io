@@ -11,8 +11,9 @@ categories: jekyll update
 
 ![BulletinBoard]({{ site.url }}/assets/codeflower.PNG)
 
-우리는 먼저 reddit에서 각 카테고리에 대한 가지를 만들어 추천 수가 많은 게시글의 노드는 노드의 크기를 크게 해주는 방식으로 시각화를 생각하고 있다.
+우리는 먼저 [reddit][reddit]에서 각 카테고리에 대한 가지를 만들어 추천 수가 많은 게시글의 노드는 노드의 크기를 크게 해주는 방식으로 시각화를 생각하고 있다.
 
 
 [졸업과제-인터넷 게시판의 시각화(서버만들기)]: https://ehaannnn.github.io/jekyll/update/2017/07/22/%EC%A1%B8%EC%97%85%EA%B3%BC%EC%A0%9C(%EC%84%9C%EB%B2%84%EB%A7%8C%EB%93%A4%EA%B8%B0).html
 [codeflower]: http://www.redotheweb.com/CodeFlower/
+[reddit]: https://www.reddit.com/
