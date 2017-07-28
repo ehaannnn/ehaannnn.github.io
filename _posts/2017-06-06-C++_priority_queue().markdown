@@ -44,7 +44,7 @@ int main() {
 3
 ```
 
-priority_queue는 default Comparator가 less<type> 이므로 내림차순으로 정렬하기 위해선
+priority_queue는 default Comparator가 less<type> 이므로 오름차순으로 정렬하기 위해선
 다음과 같이 <functional> 헤더에 있는 greater<type>을 이용한다.
 ```
 priority_queue<int, vector<int>, greater<int> > pq;
