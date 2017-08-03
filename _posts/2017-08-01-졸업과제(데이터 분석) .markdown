@@ -8,6 +8,7 @@ categories: jekyll update
 reddit에서 수집한 데이터에 대한 지표를 분석한 결과는 표-1과 같다.
 
 표-1. reddit에서 추출한 데이터에 대한 지표 분석결과
+
 | 분류 | 추출 게시물 수 | 댓글 수 | 평균 댓글 수 |
 | :---: | :---: | :---: | :--: |
 | news | 163 | 37658 | 231 |
@@ -20,6 +21,7 @@ reddit에서 수집한 데이터에 대한 지표를 분석한 결과는 표-1�
 수집한 데이터 중 popular subreddit에 대한 데이터가 가장 많았다. popular subreddit은 모든 subreddit 중 인기가 많은 subreddit을 모아 놓은 것인데 이 데이터에서 어느 subreddit이 가장 인기가 많았는지, 즉 사람들이 어떤 분야에 관심이 가장 많은지 분석해 보았다. 표-2는 popular subreddit중 가장 각 subreddit들이 차지하는 비율을 중 상위 20개의 subreddit을 오름차순으로 정리한 표이다.
 
 표-2. popular subreddit에서 각 subreddit이 차지하는 비율 중 상위 20개의 subreddit
+
 | 분류 | 비율 |
 | :---: | :---: |
 | Tinder | 0.00464486162183 |
