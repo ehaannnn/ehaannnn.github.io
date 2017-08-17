@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "졸업과제-인터넷 게시판의 시각화(가설 검증-3)"
+title:  "졸업과제-인터넷 게시판의 시각화(가설 검증-1)"
 date:   2017-08-17 14:45:00 +0900
 categories: jekyll update
 ---
